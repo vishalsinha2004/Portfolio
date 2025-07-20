@@ -420,6 +420,54 @@ article {
 article .icon {
   cursor: default;
 }
+/* Desktop Styles */
+#experience .experience-details-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Mobile Styles (only apply to #experience) */
+@media (max-width: 768px) {
+  #experience .experience-details-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  #experience .about-containers {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+    width: max-content;
+  }
+
+  #experience .details-container {
+    min-width: 85vw;
+    max-width: 85vw;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    background: var(--primary-color-2); /* Optional */
+    border-radius: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Optional */
+  }
+
+  #experience .article-container {
+    flex-wrap: wrap;
+  }
+}
+
+/* Hide scrollbar only in skills section */
+#experience .experience-details-container::-webkit-scrollbar {
+  display: none;
+}
+#experience .experience-details-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 /* PROJECTS SECTION */
 
@@ -447,6 +495,55 @@ article .icon {
   color: var(--secondary-color);
   border-color: var(--container-border);
 }
+/* Desktop Styles */
+#projects .experience-details-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  #projects .experience-details-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  #projects .about-containers {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+    width: max-content;
+  }
+
+  #projects .details-container {
+    min-width: 85vw;
+    max-width: 85vw;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    background: var(--primary-color-2); /* Optional - for visibility */
+    border-radius: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Optional */
+  }
+
+  #projects .article-container {
+    flex-wrap: wrap;
+  }
+}
+
+/* Hide scrollbar only in project section */
+#projects .experience-details-container::-webkit-scrollbar {
+  display: none;
+}
+#projects .experience-details-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 
 /* CONTACT */
 
