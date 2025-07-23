@@ -504,80 +504,140 @@ article .icon {
 }
 
 /* PROJECTS SECTION */
-
 #projects {
   position: relative;
+  overflow-x: hidden;
 }
 
-.color-container {
-  border-color: var(--container-border);
+/* Flip Card Container */
+.card {
+  width: 100%;
+  max-width: 350px;
+  margin: auto;
+  perspective: 1000px;
+  flex: 0 0 auto; /* Required for horizontal scrolling */
+}
+
+/* Inner Card Flip Animation */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front and Back Face */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  backface-visibility: hidden;
   background: var(--primary-color-2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+.card-back {
+  transform: rotateY(180deg);
+  text-align: center;
+}
+
+/* Project Image */
 .project-img {
-  border-radius: 2rem;
-  width: 90%;
-  height: 90%;
+  border-radius: 1rem;
+  width: 80%;
+  height: auto;
+  object-fit: contain;
 }
 
+/* Titles and Text */
 .project-title {
-  margin: 1rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: center;
   color: var(--secondary-color);
 }
 
-.project-btn {
+.project-description {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
   color: var(--secondary-color);
-  border-color: var(--container-border);
+  padding: 0 1rem;
 }
-/* Desktop Styles */
+
+/* Button Container */
+.btn-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Layout Structure */
 #projects .experience-details-container {
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  width: 100%;
+  overflow-x: auto;
 }
 
-/* Mobile Styles */
+#projects .about-containers {
+  display: flex;
+  flex-wrap: nowrap; /* prevent wrapping to allow horizontal scroll */
+  gap: 2rem;
+  padding: 2rem 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+#projects .about-containers::-webkit-scrollbar {
+  display: none;
+}
+
+#projects .about-containers {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Responsive Flip Cards on Mobile */
 @media (max-width: 768px) {
-  #projects .experience-details-container {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
+  .card-inner {
+    height: 380px;
   }
 
-  #projects .about-containers {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    padding: 1rem;
-    width: max-content;
-  }
-
-  #projects .details-container {
+  .card {
     min-width: 85vw;
     max-width: 85vw;
     flex-shrink: 0;
     scroll-snap-align: start;
-    background: var(--primary-color-2); /* Optional - for visibility */
-    border-radius: 1rem;
-    padding: 1rem;
-    box-sizing: border-box;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Optional */
-  }
-
-  #projects .article-container {
-    flex-wrap: wrap;
   }
 }
-
-/* Hide scrollbar only in project section */
-#projects .experience-details-container::-webkit-scrollbar {
-  display: none;
-}
-#projects .experience-details-container {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+/* Button Container */
+.btn-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
+/* Add this inside your media query */
+@media (max-width: 768px) {
+  .btn-container {
+    margin-bottom: 1.5rem; /* Adjust as needed */
+  }
+}
 
 /* CONTACT */
 
