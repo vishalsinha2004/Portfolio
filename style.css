@@ -614,28 +614,41 @@ article .icon {
 
 /* Responsive Flip Cards on Mobile */
 @media (max-width: 768px) {
-  .card-inner {
-    height: 380px;
-  }
-
   .card {
     min-width: 85vw;
     max-width: 85vw;
     flex-shrink: 0;
     scroll-snap-align: start;
   }
-}
-/* Button Container */
-.btn-container {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
 
-/* Add this inside your media query */
-@media (max-width: 768px) {
+  .card-inner {
+    height: 400px;
+  }
+
   .btn-container {
-    margin-bottom: 1.5rem; /* Adjust as needed */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-container button,
+  .btn-container a {
+    width: 80%;
+    max-width: 250px;
+  }
+
+  .project-img {
+    width: 70%;
+  }
+
+  .project-title {
+    font-size: 1.1rem;
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
   }
 }
 
