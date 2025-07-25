@@ -710,6 +710,30 @@ article .icon {
     justify-content: center;
   }
 }
+
+.touch-hint {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--secondary-color);
+  text-align: center;
+  
+  opacity: 0.8;
+}
+
+.blink-icon {
+  animation: blink 1.2s infinite;
+}
+
+/* Blink Animation Keyframes */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 /* CONTACT */
 
 #contact {
