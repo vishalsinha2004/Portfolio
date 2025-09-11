@@ -799,13 +799,13 @@ footer p {
 #chat-widget-button {
   width: 60px;
   height: 60px;
-  background-color: var(--button-background);
+  /* background-color: var(--button-background); */
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
   transition: all 0.3s ease;
 }
 
@@ -814,8 +814,8 @@ footer p {
 }
 
 #chat-widget-button .icon {
-  width: 32px;
-  height: 32px;
+  width: 50px;
+  height: 50px;
 }
 
 #chat-widget-panel {
