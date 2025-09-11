@@ -8,7 +8,6 @@
     flex-wrap: wrap;
   }
 }
-
 @media screen and (max-width: 1200px) {
   #desktop-nav {
     display: none;
@@ -51,9 +50,7 @@
     margin-top: 0;
   }
 }
-
 @media screen and (max-width: 600px) {
-
   #contact,
   footer {
     height: 40vh;
@@ -118,5 +115,18 @@
 
   .text-container {
     text-align: justify;
+  }
+
+  /* CHATBOT RESPONSIVE STYLES */
+  #chat-widget-container {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  #chat-widget-panel {
+    bottom: 5.5rem;
+    right: 1rem;
+    width: calc(100vw - 2rem);
+    height: 65vh;
   }
 }
