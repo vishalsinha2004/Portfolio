@@ -943,7 +943,6 @@ footer p {
 
 .chatbot-input {
   flex: 1;
-  padding: 0.8rem 1rem;
   border: 1px solid var(--chatbot-border);
   border-radius: 2rem;
   background: var(--chatbot-input-bg);
