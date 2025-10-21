@@ -8,7 +8,6 @@ function toggleMenu() {
 const roles = [
   "Frontend Developer",
   "Backend Developer",
-  "Full Stack Developer",
 ];
 let roleIndex = 0;
 let charIndex = 0;
