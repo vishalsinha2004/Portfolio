@@ -125,7 +125,7 @@ class Chatbot {
         const chatbotHTML = `
             <div id="chatbot-root">
                 <button class="chatbot-toggle">
-                    <img src="ai.png" alt="AI Assistant" class="icon" />
+                    <img src="/static/core/images/ai.png" alt="AI Assistant" class="icon" />
                 </button>
                 <div class="chatbot-panel">
                     <div class="chatbot-header">
