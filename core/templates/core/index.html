@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vishal Sinha - Portfolio</title>
     <link rel="icon" type="image/png" href="{% static 'core/images/v.png' %}">
-<link rel="stylesheet" href="{% static 'core/css/style.css' %}" />
-<link rel="stylesheet" href="{% static 'core/css/media.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/css/media.css' %}" />
 </head>
 
 <body>
@@ -22,12 +22,10 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
-                    <img id="modeToggle" class="icon color-icon" 
-     src="{% static 'core/assets/theme_light.png' %}"
-     src-light="{% static 'core/assets/theme_light.png' %}" 
-     src-dark="{% static 'core/assets/theme_dark.png' %}" 
-     alt="Color theme icon" />
-    </li>
+                    <img id="modeToggle" class="icon color-icon" src="{% static 'core/assets/theme_light.png' %}"
+                        src-light="{% static 'core/assets/theme_light.png' %}"
+                        src-dark="{% static 'core/assets/theme_dark.png' %}" alt="Color theme icon" />
+                </li>
             </ul>
         </div>
     </nav>
@@ -45,8 +43,9 @@
                 <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
                 <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
                 <li>
-                    <img id="modeToggle2" class="icon color-icon" src="./assets/theme_light.png"
-                        src-light="./assets/theme_light.png" src-dark="./assets/theme_dark.png" alt="Color them icon" />
+                    <img id="modeToggle2" class="icon color-icon" src="{% static 'core/assets/theme_light.png' %}"
+                        src-light="{% static 'core/assets/theme_light.png' %}"
+                        src-dark="{% static 'core/assets/theme_dark.png' %}" alt="Color them icon" />
                 </li>
             </div>
         </div>
@@ -70,17 +69,15 @@
                 </button>
             </div>
             <div id="socials-container">
-                <img src="{% static 'core/assets/linkedin_light.png' %}" 
-     src-light="{% static 'core/assets/linkedin_light.png' %}"
-     src-dark="{% static 'core/assets/linkedin_dark.png' %}" 
-     alt="My LinkedIn profile" class="icon linkedin-icon"
-     onclick="location.href='https://linkedin.com/'" />
+                <img src="{% static 'core/assets/linkedin_light.png' %}"
+                    src-light="{% static 'core/assets/linkedin_light.png' %}"
+                    src-dark="{% static 'core/assets/linkedin_dark.png' %}" alt="My LinkedIn profile"
+                    class="icon linkedin-icon" onclick="location.href='https://linkedin.com/'" />
 
-<img src="{% static 'core/assets/github_light.png' %}" 
-     src-light="{% static 'core/assets/github_light.png' %}"
-     src-dark="{% static 'core/assets/github_dark.png' %}" 
-     alt="My github profile" class="icon github-icon"
-     onclick="location.href='https://github.com/'" />
+                <img src="{% static 'core/assets/github_light.png' %}"
+                    src-light="{% static 'core/assets/github_light.png' %}"
+                    src-dark="{% static 'core/assets/github_dark.png' %}" alt="My github profile"
+                    class="icon github-icon" onclick="location.href='https://github.com/'" />
             </div>
         </div>
     </section> <!--About me-->
@@ -94,23 +91,19 @@
             <div class="about-details-container">
                 <div class="about-containers">
                     <div class="details-container">
-                        <img 
-    src="{% static 'core/assets/experience_light.png' %}" 
-    src-light="{% static 'core/assets/experience_light.png' %}"
-    src-dark="{% static 'core/assets/experience_dark.png' %}" 
-    alt="Experience icon" 
-    class="icon" 
-/><h3>Experience</h3>
+                        <img src="{% static 'core/assets/experience_light.png' %}"
+                            src-light="{% static 'core/assets/experience_light.png' %}"
+                            src-dark="{% static 'core/assets/experience_dark.png' %}" alt="Experience icon"
+                            class="icon" />
+                        <h3>Experience</h3>
                         <p>Fresher <br />--------</p>
                     </div>
                     <div class="details-container">
-                        <img 
-    src="{% static 'core/assets/education_light.png' %}" 
-    src-light="{% static 'core/assets/education_light.png' %}"
-    src-dark="{% static 'core/assets/education_dark.png' %}" 
-    alt="Education icon" 
-    class="icon" 
-/><h3>Education</h3>
+                        <img src="{% static 'core/assets/education_light.png' %}"
+                            src-light="{% static 'core/assets/education_light.png' %}"
+                            src-dark="{% static 'core/assets/education_dark.png' %}" alt="Education icon"
+                            class="icon" />
+                        <h3>Education</h3>
                         <p>B.C.A Bachelors Degree<br /> ------------ </p>
                     </div>
                 </div>
@@ -129,192 +122,196 @@
                 </div>
             </div>
         </div>
-        <img 
-    src="{% static 'core/assets/arrow_light.png' %}" 
-    src-light="{% static 'core/assets/arrow_light.png' %}" 
-    src-dark="{% static 'core/assets/arrow_dark.png' %}"
-    alt="Arrow icon" 
-    class="icon arrow" 
-    onclick="location.href='./#experience'" 
-/> </section>
+        <img src="{% static 'core/assets/arrow_light.png' %}" src-light="{% static 'core/assets/arrow_light.png' %}"
+            src-dark="{% static 'core/assets/arrow_dark.png' %}" alt="Arrow icon" class="icon arrow"
+            onclick="location.href='./#experience'" />
+    </section>
     <section id="experience">
         <p class="section__text__p1">Explore My</p>
         <h1 class="title">skills</h1>
         <div class="experience-details-container">
             <div class="about-containers">
-                <div class="details-container"> <!--Frontend-->
-                    <h2 class="experience-sub-title">Frontend Developer</h2>
-                    <div class="article-container">
-                        <article>
-                            <img 
-    src="{% static 'core/assets/checkmark_light.png' %}" 
-    src-light="{% static 'core/assets/checkmark_light.png' %}"
-    src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
-    alt="Experience icon" 
-    class="icon" 
-/><div>
-                                <h3>HTML</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img 
-    src="{% static 'core/assets/checkmark_light.png' %}" 
-    src-light="{% static 'core/assets/checkmark_light.png' %}"
-    src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
-    alt="Experience icon" 
-    class="icon" 
-/> <div>
-                                <h3>CSS</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img 
-    src="{% static 'core/assets/checkmark_light.png' %}" 
-    src-light="{% static 'core/assets/checkmark_light.png' %}"
-    src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
-    alt="Experience icon" 
-    class="icon" 
-/> <div>
-                                <h3>JavaScript</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img 
-    src="{% static 'core/assets/checkmark_light.png' %}" 
-    src-light="{% static 'core/assets/checkmark_light.png' %}"
-    src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
-    alt="Experience icon" 
-    class="icon" 
-/> <div>
-                                <h3>React</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                    </div>
-                </div> <!--Backend-->
                 <div class="details-container">
-                    <h2 class="experience-sub-title">Backend Developer</h2>
-                    <div class="article-container">
-                        <article>
-                           <img 
-    src="{% static 'core/assets/checkmark_light.png' %}" 
-    src-light="{% static 'core/assets/checkmark_light.png' %}"
-    src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
-    alt="Experience icon" 
-    class="icon" 
-/> <div>
-                                <h3>SQL</h3>
-                                <p>Basic</p>
-                            </div>
-                        </article>
-                        <article>
-                           <img 
-    src="{% static 'core/assets/checkmark_light.png' %}" 
-    src-light="{% static 'core/assets/checkmark_light.png' %}"
-    src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
-    alt="Experience icon" 
-    class="icon" 
-/><div>
-                                <h3>Node JS</h3>
-                                <p>Base</p>
-                            </div>
-                        </article>
-                        <article>
-                           <img 
-    src="{% static 'core/assets/checkmark_light.png' %}" 
-    src-light="{% static 'core/assets/checkmark_light.png' %}"
-    src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
-    alt="Experience icon" 
-    class="icon" 
-/> <div>
-                                <h3>Python</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                           <img 
-    src="{% static 'core/assets/checkmark_light.png' %}" 
-    src-light="{% static 'core/assets/checkmark_light.png' %}"
-    src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
-    alt="Experience icon" 
-    class="icon" 
-/> <div>
-                                <h3>Java</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                    </div>
-                </div> <!-- Data Science -->
-                <div class="details-container">
-                    <h2 class="experience-sub-title">Data Science</h2>
-                    <div class="article-container">
-                        <article>
-                            <img 
-    src="{% static 'core/assets/checkmark_light.png' %}" 
-    src-light="{% static 'core/assets/checkmark_light.png' %}"
-    src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
-    alt="Experience icon" 
-    class="icon" 
-/> <div>
-                                <h3>Pandas / NumPy</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                           <img 
-    src="{% static 'core/assets/checkmark_light.png' %}" 
-    src-light="{% static 'core/assets/checkmark_light.png' %}"
-    src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
-    alt="Experience icon" 
-    class="icon" 
-/> <div>
-                                <h3>Matplotlib / Seaborn</h3>
-                                <p>Intermediate</p>
-                            </div>
-                        </article>
-                        <article>
-                           <img 
-    src="{% static 'core/assets/checkmark_light.png' %}" 
-    src-light="{% static 'core/assets/checkmark_light.png' %}"
-    src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
-    alt="Experience icon" 
-    class="icon" 
-/> <div>
-                                <h3>Scikit-Learn</h3>
-                                <p>Basic</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img 
-    src="{% static 'core/assets/checkmark_light.png' %}" 
-    src-light="{% static 'core/assets/checkmark_light.png' %}"
-    src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
-    alt="Experience icon" 
-    class="icon" 
-/> <div>
-                                <h3>Jupyter Notebook</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
+    <h2 class="experience-sub-title">Frontend Developer</h2>
+    <div class="article-container">
+        <article>
+            <img 
+                src="{% static 'core/assets/checkmark_light.png' %}" 
+                src-light="{% static 'core/assets/checkmark_light.png' %}"
+                src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
+                alt="Checkmark icon" 
+                class="icon" 
+            />
+            <div>
+                <h3>HTML</h3>
+                <p>Experienced</p>
+            </div>
+        </article>
+        <article>
+            <img 
+                src="{% static 'core/assets/checkmark_light.png' %}" 
+                src-light="{% static 'core/assets/checkmark_light.png' %}"
+                src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
+                alt="Checkmark icon" 
+                class="icon" 
+            />
+            <div>
+                <h3>CSS</h3>
+                <p>Experienced</p>
+            </div>
+        </article>
+        <article>
+            <img 
+                src="{% static 'core/assets/checkmark_light.png' %}" 
+                src-light="{% static 'core/assets/checkmark_light.png' %}"
+                src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
+                alt="Checkmark icon" 
+                class="icon" 
+            />
+            <div>
+                <h3>JavaScript</h3>
+                <p>Experienced</p>
+            </div>
+        </article>
+        <article>
+            <img 
+                src="{% static 'core/assets/checkmark_light.png' %}" 
+                src-light="{% static 'core/assets/checkmark_light.png' %}"
+                src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
+                alt="Checkmark icon" 
+                class="icon" 
+            />
+            <div>
+                <h3>React</h3>
+                <p>Experienced</p>
+            </div>
+        </article>
+    </div>
+</div> <!--Backend-->
+               <div class="details-container">
+    <h2 class="experience-sub-title">Frontend Developer</h2>
+    <div class="article-container">
+        <article>
+            <img 
+                src="{% static 'core/assets/checkmark_light.png' %}" 
+                src-light="{% static 'core/assets/checkmark_light.png' %}"
+                src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
+                alt="Checkmark icon" 
+                class="icon" 
+            />
+            <div>
+                <h3>HTML</h3>
+                <p>Experienced</p>
+            </div>
+        </article>
+        <article>
+            <img 
+                src="{% static 'core/assets/checkmark_light.png' %}" 
+                src-light="{% static 'core/assets/checkmark_light.png' %}"
+                src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
+                alt="Checkmark icon" 
+                class="icon" 
+            />
+            <div>
+                <h3>CSS</h3>
+                <p>Experienced</p>
+            </div>
+        </article>
+        <article>
+            <img 
+                src="{% static 'core/assets/checkmark_light.png' %}" 
+                src-light="{% static 'core/assets/checkmark_light.png' %}"
+                src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
+                alt="Checkmark icon" 
+                class="icon" 
+            />
+            <div>
+                <h3>JavaScript</h3>
+                <p>Experienced</p>
+            </div>
+        </article>
+        <article>
+            <img 
+                src="{% static 'core/assets/checkmark_light.png' %}" 
+                src-light="{% static 'core/assets/checkmark_light.png' %}"
+                src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
+                alt="Checkmark icon" 
+                class="icon" 
+            />
+            <div>
+                <h3>React</h3>
+                <p>Experienced</p>
+            </div>
+        </article>
+    </div>
+</div> <!-- Data Science -->
+              <div class="details-container">
+    <h2 class="experience-sub-title">Frontend Developer</h2>
+    <div class="article-container">
+        <article>
+            <img 
+                src="{% static 'core/assets/checkmark_light.png' %}" 
+                src-light="{% static 'core/assets/checkmark_light.png' %}"
+                src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
+                alt="Checkmark icon" 
+                class="icon" 
+            />
+            <div>
+                <h3>HTML</h3>
+                <p>Experienced</p>
+            </div>
+        </article>
+        <article>
+            <img 
+                src="{% static 'core/assets/checkmark_light.png' %}" 
+                src-light="{% static 'core/assets/checkmark_light.png' %}"
+                src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
+                alt="Checkmark icon" 
+                class="icon" 
+            />
+            <div>
+                <h3>CSS</h3>
+                <p>Experienced</p>
+            </div>
+        </article>
+        <article>
+            <img 
+                src="{% static 'core/assets/checkmark_light.png' %}" 
+                src-light="{% static 'core/assets/checkmark_light.png' %}"
+                src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
+                alt="Checkmark icon" 
+                class="icon" 
+            />
+            <div>
+                <h3>JavaScript</h3>
+                <p>Experienced</p>
+            </div>
+        </article>
+        <article>
+            <img 
+                src="{% static 'core/assets/checkmark_light.png' %}" 
+                src-light="{% static 'core/assets/checkmark_light.png' %}"
+                src-dark="{% static 'core/assets/checkmark_dark.png' %}" 
+                alt="Checkmark icon" 
+                class="icon" 
+            />
+            <div>
+                <h3>React</h3>
+                <p>Experienced</p>
+            </div>
+        </article>
+    </div>
+</div>
             </div>
         </div>
-       <img 
-    src="{% static 'core/assets/arrow_light.png' %}" 
-    src-light="{% static 'core/assets/arrow_light.png' %}" 
-    src-dark="{% static 'core/assets/arrow_dark.png' %}"
-    alt="Arrow icon" 
-    class="icon arrow" 
-    onclick="location.href='./#experience'" 
-/></section>
+        <img src="{% static 'core/assets/arrow_light.png' %}" src-light="{% static 'core/assets/arrow_light.png' %}"
+            src-dark="{% static 'core/assets/arrow_dark.png' %}" alt="Arrow icon" class="icon arrow"
+            onclick="location.href='./#experience'" />
+    </section>
     <section id="projects">
         <p class="section__text__p1">Browse My Recent</p>
         <h1 class="title">Projects</h1>
-<p class="touch-hint"> Scroll Right More <span class="blink-icon">👉 </span></p>
+        <p class="touch-hint"> Scroll Right More <span class="blink-icon">👉 </span></p>
 
         <div class="experience-details-container">
             <div class="about-containers"> <!-- Project 1 -->
@@ -322,7 +319,8 @@
                     <div class="card-inner">
                         <div class="card-front details-container color-container">
                             <div class="article-container">
-<img src="{% static 'core/images/Finder.png' %}" alt="Finder" class="project-img" />                            </div>
+                                <img src="{% static 'core/images/Finder.png' %}" alt="Finder" class="project-img" />
+                            </div>
                             <p class="touch-hint"><span class="blink-icon">👆</span> Touch here to flip</p>
                             <h2 class="project-title">Finder...</h2>
                             <div class="btn-container">
@@ -491,23 +489,18 @@
         <h1 class="title">Contact Me</h1>
         <div class="contact-info-upper-container">
             <div class="contact-info-container">
-                <img 
-    src="{% static 'core/assets/email_light.png' %}" 
-    src-light="{% static 'core/assets/email_light.png' %}" 
-    src-dark="{% static 'core/assets/email_dark.png' %}" 
-    alt="Email icon" 
-    class="icon contact-icon email-icon" 
-/><p><a href="mailto:vishalsinha2720@gmail.com">vishalsinha6567@gmail.com</a></p>
+                <img src="{% static 'core/assets/email_light.png' %}"
+                    src-light="{% static 'core/assets/email_light.png' %}"
+                    src-dark="{% static 'core/assets/email_dark.png' %}" alt="Email icon"
+                    class="icon contact-icon email-icon" />
+                <p><a href="mailto:vishalsinha2720@gmail.com">vishalsinha6567@gmail.com</a></p>
             </div>
             <div class="contact-info-container">
-                <img 
-    src="{% static 'core/assets/linkedin_light.png' %}" 
-    src-light="{% static 'core/assets/linkedin_light.png' %}" 
-    src-dark="{% static 'core/assets/linkedin_dark.png' %}" 
-    alt="My LinkedIn profile" 
-    class="icon linkedin-icon"
-    onclick="location.href='https://linkedin.com/'" 
-/><p><a href="https://www.linkedin.com">LinkedIn</a></p>
+                <img src="{% static 'core/assets/linkedin_light.png' %}"
+                    src-light="{% static 'core/assets/linkedin_light.png' %}"
+                    src-dark="{% static 'core/assets/linkedin_dark.png' %}" alt="My LinkedIn profile"
+                    class="icon linkedin-icon" onclick="location.href='https://linkedin.com/'" />
+                <p><a href="https://www.linkedin.com">LinkedIn</a></p>
             </div>
         </div>
     </section>
@@ -531,7 +524,7 @@
         </nav>
         <p>Copyright © 2025 Vishal Sinha. All Rights Reserved.</p>
     </footer>
-<script src="{% static 'core/js/script.js' %}"></script>
+    <script src="{% static 'core/js/script.js' %}"></script>
 </body>
 
 </html>
