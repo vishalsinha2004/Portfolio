@@ -7,31 +7,51 @@ function toggleMenu() {
 
 const roles = [
     "Frontend Developer",
+    "Web Developer",
+    "Full Stack Developer",
+    "Python Developer",
     "Backend Developer",
+    "Data Science Enthusiast",
+    "AI Integrator",
 ];
+
 let roleIndex = 0;
 let charIndex = 0;
-const textEl = document.getElementById("animated-text");
+let isDeleting = false;
+const typingSpeed = 100;
+const deletingSpeed = 50;
+const pauseBetween = 2000; // Wait 2 seconds before deleting
 
 function typeEffect() {
-    if (charIndex <= roles[roleIndex].length) {
-        textEl.textContent = roles[roleIndex].substring(0, charIndex++);
-        setTimeout(typeEffect, 100);
-    } else {
-        setTimeout(eraseEffect, 2000);
-    }
-}
+    const textElement = document.getElementById("animated-text");
+    if (!textElement) return; // Safety check
 
-function eraseEffect() {
-    if (charIndex >= 0) {
-        textEl.textContent = roles[roleIndex].substring(0, charIndex--);
-        setTimeout(eraseEffect, 60);
+    const currentRole = roles[roleIndex];
+
+    if (isDeleting) {
+        // Remove characters
+        textElement.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
     } else {
+        // Add characters
+        textElement.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+    }
+
+    // Logic for switching between typing and deleting
+    if (!isDeleting && charIndex === currentRole.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, pauseBetween);
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
         roleIndex = (roleIndex + 1) % roles.length;
-        setTimeout(typeEffect, 200);
+        setTimeout(typeEffect, 500);
+    } else {
+        setTimeout(typeEffect, isDeleting ? deletingSpeed : typingSpeed);
     }
 }
 
+// Start the animation when the page loads
 document.addEventListener("DOMContentLoaded", typeEffect);
 
 // Dark / light mode
