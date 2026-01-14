@@ -61,7 +61,7 @@
     <span id="animated-text"></span>
 </p>
             <div class="btn-container">
-                <button class="btn btn-color-2" onclick="window.open('Resume.pdf')">
+                <button class="btn btn-color-2" onclick="window.open ('Resume.pdf')">
                     Resume
                 </button>
                 <button class="btn btn-color-1" onclick="location.href='./#contact'">
@@ -312,11 +312,75 @@
 
     <div class="experience-details-container">
         <div class="about-containers">
+
+             <div class="card" onclick="this.classList.toggle('flipped')">
+                <div class="card-inner">
+                    <div class="card-front details-container color-container">
+                        <div class="article-container">
+                            <img src="{% static 'core/images/p-3.png' %}" alt="Heart" class="project-img" />
+                        </div>
+                        <p class="touch-hint">Touch here</p>
+                        <h2 class="project-title">MarkAI</h2>
+                        <div class="btn-container">
+                            <button class="btn btn-color-2 project-btn"
+                                onclick="event.stopPropagation(); window.open('https://github.com/vishalsinha2004/MarkAI', '_blank')">
+                                Github
+                            </button>
+                            <button class="btn btn-color-2 project-btn"
+                                onclick="event.stopPropagation(); window.open('https://github.com/vishalsinha2004/MarkAI', '_blank')">
+                                Visit
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-back details-container color-container">
+                        <h2 class="project-title">AI Voice assistant </h2>
+                        <p class="project-description">
+Developed MarkAI, an AI-powered voice assistant capable of 
+understanding and responding to natural language commands.Integrated speech recognition and text-to-speech for hands-free, real-
+time user interaction.Enabled intelligent responses using generative AI for answering queries 
+and task automation.Implemented system-level automation such as opening applications, 
+playing music, and fetching real-time information.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+             <div class="card" onclick="this.classList.toggle('flipped')">
+                <div class="card-inner">
+                    <div class="card-front details-container color-container">
+                        <div class="article-container">
+                            <img src="{% static 'core/images/p-3.png' %}" alt="Heart" class="project-img" />
+                        </div>
+                        <p class="touch-hint">Touch here</p>
+                        <h2 class="project-title">AI-Based Attendance </h2>
+                        <div class="btn-container">
+                            <button class="btn btn-color-2 project-btn"
+                                onclick="event.stopPropagation(); window.open('https://github.com/vishalsinha2004/Attendance-management-system', '_blank')">
+                                Github
+                            </button>
+                            <button class="btn btn-color-2 project-btn"
+                                onclick="event.stopPropagation(); window.open('https://github.com/vishalsinha2004/Attendance-management-system', '_blank')">
+                                Visit
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-back details-container color-container">
+                        <h2 class="project-title">AI-Based Attendance</h2>
+                        <p class="project-description">
+Built an AI-powered attendance system using computer vision to automatically recognize faces and mark attendance in real time.Implemented face detection and recognition with OpenCV, MediaPipe, 
+and DeepFace for accurate identification.Automated attendance logging with timestamps and exported records to 
+CSV/Excel formats.Optimized performance using a single-image-per-user database and 
+efficient camera frame processing.                        </p>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="card" onclick="this.classList.toggle('flipped')">
                 <div class="card-inner">
                     <div class="card-front details-container color-container">
                         <div class="article-container">
-                            <img src="{% static 'core/images/Finder.png' %}" alt="Finder" class="project-img" />
+                            <img src="{% static 'core/images/p-3.png' %}" alt="Finder" class="project-img" />
                         </div>
                         <p class="touch-hint">Touch here</p>
                         <h2 class="project-title">Finder</h2>
@@ -326,13 +390,13 @@
                                 Github
                             </button>
                             <button class="btn btn-color-2 project-btn"
-                                onclick="event.stopPropagation(); window.open('https://finder-stlh.onrender.com/', '_blank')">
+                                onclick="event.stopPropagation(); window.open('https://finder-ochre.vercel.app/', '_blank')">
                                 Visit
                             </button>
                         </div>
                     </div>
                     <div class="card-back details-container color-container">
-                        <h2 class="project-title">FinderAI</h2>
+                        <h2 class="project-title">Finder</h2>
                         <p class="project-description">
                             Full-stack note-sharing platform integrated with Firebase and the Gemini API for smart organization.
                         </p>
@@ -344,7 +408,7 @@
                 <div class="card-inner">
                     <div class="card-front details-container color-container">
                         <div class="article-container">
-                            <img src="{% static 'core/images/Heart.png' %}" alt="Heart" class="project-img" />
+                            <img src="{% static 'core/images/p-3.png' %}" alt="Heart" class="project-img" />
                         </div>
                         <p class="touch-hint">Touch here</p>
                         <h2 class="project-title">Heart</h2>
@@ -372,7 +436,7 @@
                 <div class="card-inner">
                     <div class="card-front details-container color-container">
                         <div class="article-container">
-                            <img src="{% static 'core/images/view.webp' %}" alt="mysolvingerai" class="project-img" />
+                            <img src="{% static 'core/images/p-3.png' %}" alt="mysolvingerai" class="project-img" />
                         </div>
                         <p class="touch-hint">Touch here</p>
                         <h2 class="project-title">SolvingerAI</h2>
