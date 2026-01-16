@@ -1,31 +1,32 @@
 import os
 import json
 import google.generativeai as genai
+from groq import Groq
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from dotenv import load_dotenv
 
-# Force reload from the .env file
+# Force reload from the .env file for security
 load_dotenv(override=True)
 
-api_key = os.getenv("GEMINI_API_KEY")
+# 1. Configure Groq Client
+GROQ_CLIENT = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-if api_key:
-    genai.configure(api_key=api_key)
+# 2. Configure Gemini Client
+gemini_api_key = os.getenv("GEMINI_API_KEY")
+if gemini_api_key:
+    genai.configure(api_key=gemini_api_key)
     # Using the stable 2025 model
-    model = genai.GenerativeModel('gemini-2.5-flash')
+    gemini_model = genai.GenerativeModel('gemini-1.5-flash')
 else:
-    model = None
+    gemini_model = None
 
 def home(request):
     return render(request, 'core/index.html')
 
 @csrf_exempt
 def chatbot_response(request):
-    if not model:
-        return JsonResponse({'reply': "System Error: API Key is missing."}, status=500)
-        
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
@@ -79,14 +80,34 @@ TONE AND BEHAVIOR:
 
 - Always encourage the user to view his GitHub (github.com/vishalsinha2004) or LinkedIn.
 
-            """ # Your full prompt here
+            """
 
-            response = model.generate_content(f"{system_context}\nUser: {user_message}")
-            return JsonResponse({'reply': response.text})
+            reply = ""
+            # --- Try GROQ First (High Speed) ---
+            try:
+                completion = GROQ_CLIENT.chat.completions.create(
+                    model="llama-3.1-8b-instant",
+                    messages=[
+                        {"role": "system", "content": system_context},
+                        {"role": "user", "content": user_message}
+                    ],
+                )
+                reply = completion.choices[0].message.content
+                print("Response provided by GROQ")
+            
+            # --- Fallback to Gemini if GROQ fails ---
+            except Exception as groq_err:
+                print(f"GROQ failed, falling back to Gemini: {groq_err}")
+                if gemini_model:
+                    response = gemini_model.generate_content(f"{system_context}\nUser: {user_message}")
+                    reply = response.text
+                else:
+                    reply = "I'm having trouble connecting to my AI services right now."
+
+            return JsonResponse({'reply': reply})
             
         except Exception as e:
-            # If you still see 'expired', it means your NEW key also has issues
-            print(f"Chatbot Error: {e}")
-            return JsonResponse({'reply': f"Error: {str(e)}"}, status=500)
+            print(f"Chatbot Execution Error: {e}")
+            return JsonResponse({'reply': "I encountered an error. Please try again later."}, status=500)
     
     return JsonResponse({'error': 'Invalid request'}, status=400)
