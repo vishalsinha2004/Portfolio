@@ -1,0 +1,9 @@
+Full Name: Vishal Sinha
+Education: BCA student at Shreyarth University.
+Academic Performance: 7.36 SGPA.
+Professional Experience: Data Science Intern at TECHMICRE (June-July 2025).
+Specializations: Python, Django, AI/ML, and Full-Stack Web Development.
+Contact: vishalsinha6567@gmail.com
+Portfolio: https://vishal-portfolio-j1t4.onrender.com/
+GitHub: https://github.com/vishalsinha2004/
+LinkedIn: https://www.linkedin.com/in/vishal-sinha2004/

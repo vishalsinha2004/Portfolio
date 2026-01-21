@@ -1,27 +1,46 @@
 import os
 import json
-import google.generativeai as genai
-from groq import Groq
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 from dotenv import load_dotenv
 
-# Force reload from the .env file for security
+from langchain_groq import ChatGroq
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+
 load_dotenv(override=True)
 
-# 1. Configure Groq Client
-GROQ_CLIENT = Groq(api_key=os.getenv("GROQ_API_KEY"))
+# 1. LLM CONFIGURATION (With Fallback)
+primary_llm = ChatGroq(
+    model="llama-3.3-70b-versatile", 
+    temperature=0.7,
+    api_key=os.getenv("GROQ_API_KEY")
+)
 
-# 2. Configure Gemini Client
-gemini_api_key = os.getenv("GEMINI_API_KEY")
-if gemini_api_key:
-    genai.configure(api_key=gemini_api_key)
-    # Using the stable 2025 model
-    gemini_model = genai.GenerativeModel('gemini-1.5-flash')
-else:
-    gemini_model = None
+fallback_llm = ChatGoogleGenerativeAI(
+    model="gemini-1.5-flash", 
+    temperature=0.7,
+    google_api_key=os.getenv("GOOGLE_API_KEY") 
+)
 
+llm_chainable = primary_llm.with_fallbacks([fallback_llm])
+
+# 2. DATA LOADERS
+def load_portfolio_data():
+    knowledge_path = os.path.join(settings.BASE_DIR, 'core', 'knowledge.txt')
+    projects_path = os.path.join(settings.BASE_DIR, 'core', 'projects.json')
+    
+    with open(knowledge_path, 'r', encoding='utf-8') as f:
+        bio = f.read()
+    with open(projects_path, 'r', encoding='utf-8') as f:
+        projects = json.load(f)
+        
+    return bio, projects
+
+# 3. VIEWS
 def home(request):
     return render(request, 'core/index.html')
 
@@ -29,89 +48,39 @@ def home(request):
 def chatbot_response(request):
     if request.method == 'POST':
         try:
+            bio, projects = load_portfolio_data()
             data = json.loads(request.body)
-            user_message = data.get('message', '')
+            user_input = data.get('message', '')
 
-            system_context = """
+            # THE FIX: Strict Guardrails in the System Prompt
+            prompt = ChatPromptTemplate.from_messages([
+                ("system", """You are the official Portfolio Assistant for Vishal Sinha.
+                
+                STRICT LIMITATION:
+                1. You ONLY answer questions related to Vishal Sinha, his skills, projects, and background.
+                2. If a user asks a general knowledge question (e.g., 'What is Python?', 'Who is the president?', 'How to cook?'), you must politely decline.
+                3. Response for off-topic questions: "I am specialized in providing information about Vishal Sinha's career and projects. For general queries, please use a standard search engine."
 
-           You are the official AI Assistant for Vishal Sinha's Portfolio.
+                VISHAL'S KNOWLEDGE BASE:
+                {bio}
+                
+                VISHAL'S PROJECTS:
+                {projects}
+                """),
+                ("user", "{input}")
+            ])
 
-Your goal is to provide accurate information about Vishal to recruiters and collaborators.
-
-
-LANGUAGE RULES:
-1. AUTO-DETECT: Identify the language the user is speaking (Hindi, Gujarati, Spanish, French, etc.).
-2. CONSISTENCY: Always respond in the SAME language the user used.
-3. CLARITY: Avoid complex idioms. Use clear, professional language that translates well across cultures.
-
-VISHAL'S BACKGROUND:
-
-- Education: BCA student at Shreyarth University with a solid SGPA of 7.36.
-
-- Role: Ambitious Full-Stack Developer, AI/ML Enthusiast, and former Data Science Intern at TECHMICRE.
-
-- Contact: vishalsinha6567@gmail.com | Portfolio: vishalsinha.netlify.app.
-
-
-
-CORE TECHNICAL SKILLS:
-
-- Languages: Python, JavaScript, PHP, Java.
-
-- Frameworks/Libraries: Django, Node.js, React, OpenCV, Mediapipe, LangChain.
-
-- Tools: Firebase, MySQL, MongoDB, FAISS (Vector Databases).
-
-
-
-KEY PROJECTS TO HIGHLIGHT:
-
-1.MarkAI: An AI-powered desktop voice assistant using Gemini LLM and OpenCV.
-
-2.MyPDF.AI: A RAG-based chatbot that lets users interact with PDF documents using FAISS embeddings.
-
-3.Face Recognition Attendance System: A real-time system built with DeepFace and OpenPyXL.
-
-4.Finder: A full-stack note-sharing platform integrated with the Gemini API.
-
-
-
-TONE AND BEHAVIOR:
-
-- Be professional, technically knowledgeable, and friendly.
-
-- If asked about his experience, mention his internship at TECHMICRE (June-July 2025).
-
-- Always encourage the user to view his GitHub (github.com/vishalsinha2004) or LinkedIn.
-
-            """
-
-            reply = ""
-            # --- Try GROQ First (High Speed) ---
-            try:
-                completion = GROQ_CLIENT.chat.completions.create(
-                    model="llama-3.1-8b-instant",
-                    messages=[
-                        {"role": "system", "content": system_context},
-                        {"role": "user", "content": user_message}
-                    ],
-                )
-                reply = completion.choices[0].message.content
-                print("Response provided by GROQ")
+            # Build and invoke the chain
+            chain = prompt | llm_chainable | StrOutputParser()
             
-            # --- Fallback to Gemini if GROQ fails ---
-            except Exception as groq_err:
-                print(f"GROQ failed, falling back to Gemini: {groq_err}")
-                if gemini_model:
-                    response = gemini_model.generate_content(f"{system_context}\nUser: {user_message}")
-                    reply = response.text
-                else:
-                    reply = "I'm having trouble connecting to my AI services right now."
-
+            # LangChain handles the variable injection safely
+            reply = chain.invoke({
+                "input": user_input,
+                "bio": bio,
+                "projects": json.dumps(projects)
+            })
+            
             return JsonResponse({'reply': reply})
-            
         except Exception as e:
-            print(f"Chatbot Execution Error: {e}")
-            return JsonResponse({'reply': "I encountered an error. Please try again later."}, status=500)
-    
-    return JsonResponse({'error': 'Invalid request'}, status=400)
+            print(f"Chatbot Error: {e}")
+            return JsonResponse({'reply': "I'm having trouble focusing right now. Please try again later."}, status=500)

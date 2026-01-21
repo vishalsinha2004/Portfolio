@@ -1,0 +1,39 @@
+[
+  {
+    "title": "MarkAI",
+    "description": "An AI-powered desktop voice assistant using Gemini LLM and OpenCV for real-time interaction.",
+    "tech": ["Python", "Gemini API", "OpenCV"],
+    "link": "https://github.com/vishalsinha2004/MarkAI"
+  },
+  {
+    "title": "WhatsApp-Agent",
+    "description": "An AI-powered WhatsApp chatbot using Gemini API and Twilio for seamless communication.",
+    "tech": ["Python", "Gemini API", "Groq API"],
+    "link": "https://github.com/vishalsinha2004/WhatsApp-Agent"
+
+  },
+  {
+    "title": "Attendance-management-system",
+    "description": "Built an AI-powered attendance system using computer vision to automatically recognize faces and mark attendance in real time.Implemented face detection and recognition with OpenCV, MediaPipe, and DeepFace for accurate identification.Automated attendance logging with timestamps and exported records to CSV/Excel formats.Optimized performance using a single-image-per-user database and efficient camera frame processing",
+    "tech": ["Python", "OpenCV", "MediaPipe", "DeepFace"],
+    "link": "https://github.com/vishalsinha2004/Attendance-management-system"
+  },
+  {
+    "title": "MyPDF.ai",
+    "description": "A RAG-based chatbot using FAISS and Gemini embeddings that allows users to interact with PDF documents.",
+    "tech": ["LangChain", "FAISS", "Gemini", "Python"],
+    "link": "https://mypdfai.onrender.com/"
+  },
+  {
+    "title": "Finder",
+    "description": "Full-stack note-sharing platform integrated with Firebase and the Gemini API for smart organization.",
+    "tech": [ "Express.js","Node.js", "Firebase", "Gemini"],
+    "link": "https://finder-ochre.vercel.app/"
+  },
+  {
+    "title":"mysolvingerai",
+    "description":"AI-powered problem-solving platform leveraging Gemini API to provide solutions across various domains.",
+    "tech":["React","Gemini API","Express.js","Node.js"],
+    "link":"https://mysolvingerai.vercel.app/"
+  }
+]
