@@ -176,17 +176,26 @@ class PortfolioChatbot {
         }
     }
 
-    addMessage({ sender, text, suggestions = [] }) {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `chat-message ${sender}-message`;
-        
-        const contentDiv = document.createElement('div');
-        contentDiv.className = 'message-text';
-        
-        // Use marked.js for professional AI formatting (lists, bold, code)
-        contentDiv.innerHTML = sender === 'bot' ? marked.parse(text) : text;
-        
-        msgDiv.appendChild(contentDiv);
+   addMessage({ sender, text, suggestions = [] }) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `chat-message ${sender}-message`;
+    
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'message-text';
+    
+    // Check if marked is available before using it
+    if (sender === 'bot') {
+        if (typeof marked !== 'undefined') {
+            contentDiv.innerHTML = marked.parse(text);
+        } else {
+            // Fallback to plain text if library didn't load
+            contentDiv.textContent = text;
+        }
+    } else {
+        contentDiv.textContent = text;
+    }
+    
+    msgDiv.appendChild(contentDiv);
 
         if (suggestions.length > 0) {
             const sugCont = document.createElement('div');
