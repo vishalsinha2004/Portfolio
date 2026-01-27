@@ -35,5 +35,18 @@
     "description":"AI-powered problem-solving platform leveraging Gemini API to provide solutions across various domains.",
     "tech":["React","Gemini API","Express.js","Node.js"],
     "link":"https://mysolvingerai.vercel.app/"
+  },
+  {
+    "title":"FinderAI",
+    "description":"A full-stack note-sharing platform integrated and the Gemini API for smart organization.",
+    "tech":["React","Firebase","Gemini API","Express.js","Node.js"],  
+    "link":"https://finderai.netlify.app/"
+  },
+  {
+    "title":"NetflixDatasetVisualization",
+    "description":"A data visualization project analyzing Netflix's movie and TV show dataset using Python libraries like Pandas, Matplotlib, and Seaborn to uncover trends and insights.",
+    "tech":["Python","Pandas","Matplotlib","Seaborn"],
+    "link":"https://github.com/vishalsinha2004/NetflixDatasetVisualization"
   }
+  
 ]

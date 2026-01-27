@@ -25,8 +25,8 @@ function typeEffect() {
     if (!textElement) return;
 
     const currentRole = roles[roleIndex];
-    const displayText = isDeleting 
-        ? currentRole.substring(0, charIndex - 1) 
+    const displayText = isDeleting
+        ? currentRole.substring(0, charIndex - 1)
         : currentRole.substring(0, charIndex + 1);
 
     textElement.textContent = displayText;
@@ -154,16 +154,16 @@ class PortfolioChatbot {
             const response = await fetch('/chat/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
+                body: JSON.stringify({
                     message: text,
-                    history: this.history 
+                    history: this.history
                 })
             });
             const data = await response.json();
-            
+
             this.hideTypingIndicator();
             this.addMessage({ sender: 'bot', text: data.reply });
-            
+
             // Update History for Memory
             this.history.push({ role: "user", content: text });
             this.history.push({ role: "assistant", content: data.reply });
@@ -176,26 +176,26 @@ class PortfolioChatbot {
         }
     }
 
-   addMessage({ sender, text, suggestions = [] }) {
-    const msgDiv = document.createElement('div');
-    msgDiv.className = `chat-message ${sender}-message`;
-    
-    const contentDiv = document.createElement('div');
-    contentDiv.className = 'message-text';
-    
-    // Check if marked is available before using it
-    if (sender === 'bot') {
-        if (typeof marked !== 'undefined') {
-            contentDiv.innerHTML = marked.parse(text);
+    addMessage({ sender, text, suggestions = [] }) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `chat-message ${sender}-message`;
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'message-text';
+
+        // Check if marked is available before using it
+        if (sender === 'bot') {
+            if (typeof marked !== 'undefined') {
+                contentDiv.innerHTML = marked.parse(text);
+            } else {
+                // Fallback to plain text if library didn't load
+                contentDiv.textContent = text;
+            }
         } else {
-            // Fallback to plain text if library didn't load
             contentDiv.textContent = text;
         }
-    } else {
-        contentDiv.textContent = text;
-    }
-    
-    msgDiv.appendChild(contentDiv);
+
+        msgDiv.appendChild(contentDiv);
 
         if (suggestions.length > 0) {
             const sugCont = document.createElement('div');
