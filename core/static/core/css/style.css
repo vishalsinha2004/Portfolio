@@ -1082,34 +1082,75 @@ footer p {
   }
 
   /* Full screen Centered Readable Column */
+ /* --- ENHANCED FULL-SCREEN DESKTOP MODE --- */
+@media (min-width: 769px) {
+  .chatbot-panel.open {
+    width: 100vw;
+    height: 100vh;
+    bottom: 0;
+    right: 0;
+    max-width: 100vw;
+    max-height: 100vh;
+    border-radius: 0;
+    border: none;
+    transform: scale(1) translateY(0);
+    
+    /* Soft blur over your portfolio */
+    background: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* The "Board" Container - This holds your chat content */
   .chatbot-header,
   .chatbot-messages,
   .chatbot-input-area {
     width: 100%;
-    max-width: 800px; /* Standard width for professional chat interfaces */
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 850px; /* Centered column width */
+    margin: 0 auto;
+    background: var(--chatbot-bg); /* Solid background for the board */
   }
 
+  /* Distinct borders for the Board sections */
   .chatbot-header {
-    padding: 2rem 3rem;
+    padding: 2.5rem 4rem;
     border-bottom: 1px solid var(--chatbot-border);
+    border-left: 1px solid var(--chatbot-border);
+    border-right: 1px solid var(--chatbot-border);
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    margin-top: 2rem; /* Give it space from the top */
   }
 
   .chatbot-messages {
-    padding: 2rem;
-    gap: 1.5rem;
+    flex: 1;
+    padding: 4rem;
+    gap: 2rem;
+    border-left: 1px solid var(--chatbot-border);
+    border-right: 1px solid var(--chatbot-border);
+    height: calc(100vh - 300px); /* Fill the vertical space */
   }
 
   .chatbot-input-area {
-    padding: 2rem 3rem;
-    background: var(--chatbot-bg);
+    padding: 2.5rem 4rem;
     border-top: 1px solid var(--chatbot-border);
+    border-left: 1px solid var(--chatbot-border);
+    border-right: 1px solid var(--chatbot-border);
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    margin-bottom: 2rem; /* Space from the bottom */
+    box-shadow: 0 -10px 25px rgba(0,0,0,0.1);
   }
 
-  /* Adjust bubble width for large screens */
+  /* Adjust bubble width for readability */
   .chat-message {
-    max-width: 70%; 
-    font-size: 1.1rem; /* Slightly larger text for desktop */
+    max-width: 75%; 
+    font-size: 1.05rem;
+    padding: 1rem 1.4rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   }
+}
 }
